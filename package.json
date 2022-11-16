@@ -1,0 +1,25 @@
+{
+  "name": "@henrytrianta/henry-learn-astro",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "dev": "astro dev --port 3001",
+    "format": "prettier -w --plugin-search-dir=. .",
+    "preview": "astro preview",
+    "start": "astro dev"
+  },
+  "dependencies": {
+    "@astrojs/image": "^0.11.4",
+    "@astrojs/tailwind": "^2.1.2",
+    "@tailwindcss/typography": "^0.5.8",
+    "astro": "^1.6.8",
+    "astro-icon": "^0.8.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.7.0",
+    "sharp": "^0.31.2",
+    "tailwindcss": "^3.2.4"
+  }
+}

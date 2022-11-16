@@ -1,0 +1,56 @@
+---
+import Container from "../components/Container/Container.astro";
+import BlogLayout from "./BlogLayout.astro";
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+// check if document is markdown
+const isMd = Astro.props.frontmatter != undefined;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="flex h-full flex-col bg-zinc-50 dark:bg-black">
+    <!-- global page separator -->
+    <div class="fixed inset-0 flex justify-center sm:px-8">
+      <div class="flex w-full max-w-7xl lg:px-8">
+        <div
+          class="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"
+        >
+        </div>
+      </div>
+    </div>
+
+    <!-- slot wrapper -->
+    <div class="relative">
+      <main>
+        {
+          !isMd && (
+            // slot for normal page
+            <slot />
+          )
+        }
+        {
+          isMd && (
+            <BlogLayout frontmatter={Astro.props.frontmatter}>
+              <slot />
+            </BlogLayout>
+          )
+        }
+      </main>
+    </div>
+  </body>
+</html>
+<style is:global>
+  /* here put the global style */
+</style>

@@ -1,0 +1,32 @@
+---
+export interface Props {}
+import { Image } from "@astrojs/image/components";
+
+let rotations = ["rotate-2", "-rotate-2", "rotate-2", "rotate-2", "-rotate-2"];
+---
+
+<div class="mt-16 sm:mt-20">
+  <div class="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+    {
+      Array(5)
+        .fill("")
+        .map((_image, imageIndex) => (
+          <div
+            class:list={[
+              "relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl",
+              rotations[imageIndex % rotations.length],
+            ]}
+          >
+            <Image
+              format={"avif"}
+              width={300}
+              aspectRatio="1:1"
+              src="https://picsum.photos/400"
+              alt=""
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
+        ))
+    }
+  </div>
+</div>

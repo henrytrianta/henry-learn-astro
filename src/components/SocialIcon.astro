@@ -1,0 +1,17 @@
+---
+import { Icon } from "astro-icon";
+
+export interface Props {
+  link?: string;
+  iconName: string;
+}
+
+const { iconName, link = "#" } = Astro.props;
+---
+
+<a href={link} class="group -m-1 p-1">
+  <Icon
+    name={iconName}
+    class="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"
+  />
+</a>
