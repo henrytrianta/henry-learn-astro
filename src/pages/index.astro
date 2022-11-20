@@ -1,14 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Container from "../components/Container/Container.astro";
-import SocialIcon from "../components/SocialIcon.astro";
-import Photos from "../components/Photos.astro";
+import Container from "../components/Container";
+import SocialIcon from "../components/SocialIcon";
+import Photos from "../components/Photos/Photos.astro";
+import Article from "../components/Article";
+import Newsletter from "../components/Newsletter";
+import Resume from "../components/Resume";
 
 const path = Astro.url.pathname;
+const posts = await Astro.glob("./blog/*.md");
+
+// sort post by date
+const sortedPosts = posts.sort(
+  (objA, objB) =>
+    Number(new Date(objB.frontmatter.date)) -
+    Number(new Date(objA.frontmatter.date))
+);
 ---
 
-<Layout title="Welcome to Astro.">
-  <Container className="mt-9">
+<Layout title="Nuitte.">
+  <Container class="mt-9">
     <div class="max-w-2xl">
       <h1
         class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
@@ -22,10 +33,7 @@ const path = Astro.url.pathname;
         excepturi laudantium!
       </p>
       <div class="mt-6 flex gap-6">
-        <SocialIcon iconName="ri:github-line" />
-        <SocialIcon iconName="ri:twitter-line" />
-        <SocialIcon iconName="ri:linkedin-line" link="http://linkedin.com" />
-        <SocialIcon iconName="ri:instagram-line" />
+        <SocialIcon />
       </div>
       <a
         id="button-gradient"
@@ -38,6 +46,25 @@ const path = Astro.url.pathname;
     </div>
   </Container>
   <Photos />
+  <Container class="mt-24 md:mt-28">
+    <div
+      class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2"
+    >
+      <div class="flex flex-col gap-16">
+        {
+          sortedPosts.map((post) => {
+            // inject url into frontmatter
+            post.frontmatter.url = post.url;
+            return <Article article={post.frontmatter} />;
+          })
+        }
+      </div>
+      <div class="space-y-10 lg:pl-16 xl:pl-24">
+        <Newsletter />
+        <Resume />
+      </div>
+    </div>
+  </Container>
 </Layout>
 
 <script>

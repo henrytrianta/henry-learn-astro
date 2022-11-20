@@ -1,16 +1,17 @@
 ---
-import InnerContainer from "./InnerContainer.astro";
-import OuterContainer from "./OuterContainer.astro";
+import ContainerInner from "./ContainerInner.astro";
+import ContainerOuter from "./ContainerOuter.astro";
 
 export interface Props {
   className?: string;
+  props?: astroHTML.JSX.HTMLAttributes;
 }
 
-const { className = "" } = Astro.props;
+const { className = "", props = {} } = Astro.props;
 ---
 
-<OuterContainer className={className}>
-  <InnerContainer>
+<ContainerOuter className={className} props={props}>
+  <ContainerInner>
     <slot />
-  </InnerContainer>
-</OuterContainer>
+  </ContainerInner>
+</ContainerOuter>

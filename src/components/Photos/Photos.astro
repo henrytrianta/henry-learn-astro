@@ -1,0 +1,42 @@
+---
+import { Image } from "@astrojs/image/components";
+import Photos from "./Photos";
+
+let pictures = [] as { default: ImageMetadata }[];
+
+// test if the folder is not empty at first to avoid throw any error
+const testIfFileExist = await import.meta.glob("./images/*.{jpeg,jpg}");
+const isEmpty = Object.keys(testIfFileExist).length === 0;
+
+// if the folder is not empty and fully satisfied
+if (!isEmpty) {
+  pictures = await Astro.glob("./images/*.{jpeg,jpg}");
+}
+
+/** so basically here what i am doing is, i wanted to use an image optimization build into astro, but it can't work without creating the functionalities under astro file, so i mixed up photo astro with solid component, and pass the children into solid component
+ *
+ * i am doing the fetch here, and pass the props into solid component
+ */
+---
+
+{
+  // check if the pictures is not empty
+  pictures.length > 0 && (
+    <Photos>
+      {pictures.map((picture, index) => {
+        return (
+          <Photos.Wrapper imageIndex={index}>
+            <Image
+              format={"avif"}
+              width={400}
+              aspectRatio="1:1"
+              src={picture.default}
+              alt=""
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+          </Photos.Wrapper>
+        );
+      })}
+    </Photos>
+  )
+}

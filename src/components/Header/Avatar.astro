@@ -1,0 +1,31 @@
+---
+import { Image } from "@astrojs/image/components";
+
+export interface Props {
+  large?: boolean;
+  className?: string;
+  props?: astroHTML.JSX.AnchorHTMLAttributes;
+}
+
+const { large = true, className = "", props = {} } = Astro.props;
+---
+
+<a
+  href="/"
+  aria-label="Home"
+  class:list={[className, "pointer-events-auto"]}
+  {...props}
+>
+  <Image
+    src="https://picsum.photos/400"
+    width={64}
+    aspectRatio="1:1"
+    alt=""
+    sizes={large ? "4rem" : "2.25rem"}
+    class:list={[
+      "rounded-full bg-zinc-100 object-cover dark:bg-zinc-800",
+      large ? "h-16 w-16" : "h-9 w-9",
+    ]}
+    priority
+  />
+</a>

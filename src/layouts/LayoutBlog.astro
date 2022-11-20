@@ -1,5 +1,5 @@
 ---
-import Container from "../components/Container/Container.astro";
+import Container from "../components/Container";
 import type { blog } from "../types";
 import formatDate from "../utils/formatDate";
 
@@ -11,7 +11,7 @@ const { frontmatter } = Astro.props;
 console.log(frontmatter);
 ---
 
-<Container className="mt-16 lg:mt-32">
+<Container class="mt-16 lg:mt-32">
   <div class="xl:relative">
     <div class="mx-auto max-w-2xl">
       <!-- {previousPathname && (

@@ -1,0 +1,24 @@
+---
+import CardLink from "./CardLink.astro";
+
+export interface Props {
+  as?: astroHTML.JSX.Element;
+  href?: string;
+}
+
+const { as: Component = "div", href = null } = Astro.props;
+---
+
+<Component
+  class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100"
+>
+  {
+    href ? (
+      <CardLink props={{ href }}>
+        <slot />
+      </CardLink>
+    ) : (
+      <slot />
+    )
+  }
+</Component>
