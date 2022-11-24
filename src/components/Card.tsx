@@ -21,7 +21,7 @@ const Card = (props: Card) => {
   return (
     <Dynamic
       component={local.as || "div"}
-      class="group relative flex flex-col items-start"
+      class={`${local.class || ""} group relative flex flex-col items-start`}
       {...rest}
     >
       {local.children}
@@ -97,7 +97,7 @@ Card.Eyebrow = (props: CardEyebrow) => {
       component={local.as || "p"}
       class={`
           relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500 
-          ${local.class} 
+          ${local.class || ""} 
           ${local.decorate && "pl-3.5"}
       `}
       {...rest}

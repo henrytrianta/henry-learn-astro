@@ -1,16 +1,27 @@
 ---
-import LayoutBlog from "./LayoutBlog.astro";
+import LayoutBlog from "./LayoutBlog";
 import Footer from "../components/Footer";
-import Header from "../components/Header/Header.astro";
+import Header from "../components/Header";
+import { Picture } from "@astrojs/image/components";
+import Avatar from "../assets/henry-char.png";
 
 export interface Props {
   title: string;
 }
 
-const { title } = Astro.props;
+let { title } = Astro.props;
 
 // check if document is markdown
 const isMd = Astro.props.frontmatter != undefined;
+
+// if the title is not exist, try to find it on frontmatter content, if not let the title being empty
+if (isMd) {
+  title = Astro.props.frontmatter?.title || "";
+}
+
+// get pathname
+const { pathname } = Astro.url;
+const isHomepage = pathname === "/";
 ---
 
 <!DOCTYPE html>
@@ -19,7 +30,7 @@ const isMd = Astro.props.frontmatter != undefined;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
+    <title>{title} - Henry Trianta</title>
   </head>
   <body class="flex h-full flex-col bg-zinc-50 dark:bg-black">
     <!-- global page separator -->
@@ -34,7 +45,21 @@ const isMd = Astro.props.frontmatter != undefined;
 
     <!-- slot wrapper -->
     <div class="relative">
-      <Header />
+      <Header pathname={pathname} client:load>
+        <Picture
+          src={Avatar}
+          sizes={isHomepage ? "4rem" : "2.25rem"}
+          widths={isHomepage ? [64, 128] : [36, 72]}
+          aspectRatio="1:1"
+          format={"avif"}
+          alt="Henry Trianta - Portrait"
+          slot="image"
+          class={`rounded-full bg-zinc-100 object-cover dark:bg-zinc-800 ${
+            isHomepage ? "h-16 w-16" : "h-9 w-9"
+          }`}
+          loading={"eager"}
+        />
+      </Header>
       <main>
         {
           !isMd && (
@@ -54,6 +79,7 @@ const isMd = Astro.props.frontmatter != undefined;
     </div>
   </body>
 </html>
+
 <style is:global>
   /* here put the global style */
 </style>
