@@ -1,31 +1,31 @@
-import Button from "./Button";
+import Button from "../../common/components/Button";
 import { BsBriefcase } from "solid-icons/bs";
-import { AiOutlineDownload } from "solid-icons/ai";
+import { RiSystemEyeLine } from "solid-icons/ri";
 
 const resume = [
   {
-    company: "Planetaria",
-    title: "CEO",
-    start: "2019",
+    company: "Kesato & Co",
+    title: "Project Manager",
+    start: "2018",
     end: "Present",
   },
   {
-    company: "Airbnb",
-    title: "Product Designer",
-    start: "2014",
-    end: "2019",
+    company: "Kesato & Co",
+    title: "Quality Assurance, Quality Control",
+    start: "2018",
+    end: "2018",
   },
   {
-    company: "Facebook",
-    title: "iOS Software Engineer",
-    start: "2011",
-    end: "2014",
+    company: "Bali Home Immo",
+    title: "Digital Marketing Manager",
+    start: "2017",
+    end: "2018",
   },
   {
-    company: "Starbucks",
-    title: "Shift Supervisor",
-    start: "2008",
-    end: "2011",
+    company: "Bali Custom Shirt",
+    title: "Webmaster",
+    start: "2017",
+    end: "2017",
   },
 ];
 
@@ -41,7 +41,6 @@ const Resume = () => {
       <ol class="mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
           <li class="flex gap-4">
-            <div class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0" />
             <dl class="flex flex-auto flex-wrap gap-x-2">
               <dt class="sr-only">Company</dt>
               <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
@@ -65,9 +64,14 @@ const Resume = () => {
         ))}
       </ol>
 
-      <Button href="/" variant="secondary" class="group mt-6 w-full">
-        Download CV
-        <AiOutlineDownload class="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+      <Button
+        href="https://doc.henrytrianta.com/resume"
+        variant="secondary"
+        class="group mt-6 w-full"
+        target="_blank"
+      >
+        See Resume
+        <RiSystemEyeLine class="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
     </div>
   );

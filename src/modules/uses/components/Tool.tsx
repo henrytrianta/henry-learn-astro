@@ -1,6 +1,6 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js/jsx-runtime";
-import Card from "./Card";
+import Card from "../../common/components/Card";
 
 interface Tool {
   href?: string;

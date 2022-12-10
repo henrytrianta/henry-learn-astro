@@ -31,7 +31,7 @@ const Footer = () => {
                 <NavLink href="/uses">Uses</NavLink>
               </div>
               <p class="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Spencer Sharp. All rights
+                &copy; {new Date().getFullYear()} Henry Trianta. All rights
                 reserved.
               </p>
             </div>

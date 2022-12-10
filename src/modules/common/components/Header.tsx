@@ -3,6 +3,7 @@ import {
   createEffect,
   createSignal,
   JSX,
+  onMount,
   Show,
   splitProps,
 } from "solid-js";
@@ -66,17 +67,37 @@ interface DesktopNavigation extends JSX.HTMLAttributes<HTMLElement> {
   pathname: string;
 }
 
+import Gradient from "../utils/gradient";
+
 function DesktopNavigation(props: DesktopNavigation) {
   const [local, rest] = splitProps(props, ["pathname"]);
+  let canvas: HTMLCanvasElement | undefined;
+
+  onMount(() => {
+    const { height, width } = canvas?.getBoundingClientRect()!;
+    const gradient = new Gradient(canvas, {
+      colors: ["#ffffff", "#f87171", "#f9a8d4", "#fef08a"],
+      seed: Math.random(),
+      height: height,
+      width: width,
+      noiseSpeed: 69,
+    });
+
+    console.log(gradient);
+  });
 
   return (
     <nav {...rest}>
-      <ul class="flex px-3 text-sm font-medium rounded-full shadow-lg bg-white/90 text-zinc-800 shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+      <ul class="flex px-3 text-sm font-medium rounded-full shadow-lg bg-white/90 text-zinc-800 shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 relative overflow-hidden mix-blend-screen">
+        <canvas
+          ref={canvas}
+          class="absolute top-0 left-0 w-full h-full opacity-50"
+        ></canvas>
         <NavItem pathname={local.pathname} href="/about">
           About
         </NavItem>
-        <NavItem pathname={local.pathname} href="/articles">
-          Articles
+        <NavItem pathname={local.pathname} href="/blogs">
+          Blogs
         </NavItem>
         <NavItem pathname={local.pathname} href="/projects">
           Projects

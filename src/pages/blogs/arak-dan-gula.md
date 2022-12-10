@@ -1,10 +1,10 @@
 ---
+layout: ../../modules/layouts/Layout.astro
 title: Arak dan gula
 date: 2021-08-27
 summary: pahit kurasa arak di malam ini, membuat lupa dengan manisnya, maaf manis ...
 tags: Puisi
 draft: false
-layout: ../../layouts/Layout.astro
 ---
 
 pahit kurasa arak di malam ini

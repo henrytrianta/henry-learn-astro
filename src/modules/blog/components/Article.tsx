@@ -1,6 +1,6 @@
-import type { blog } from "../types";
-import formatDate from "../utils/formatDate";
-import Card from "./Card";
+import type { blog } from "../../common/types";
+import formatDate from "../../common/utils/formatDate";
+import Card from "../../common/components/Card";
 
 interface Article {
   article: blog;

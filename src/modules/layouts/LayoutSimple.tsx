@@ -1,11 +1,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js/jsx-runtime";
-import Container from "../components/Container";
+import Container from "../common/components/Container";
 
 interface LayoutSimple {
   title: string;
   intro: string;
-  children: JSX.Element;
+  children?: JSX.Element;
 }
 
 const LayoutSimple = (props: LayoutSimple) => {

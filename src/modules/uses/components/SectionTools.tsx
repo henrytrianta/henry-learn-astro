@@ -1,6 +1,6 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js/jsx-runtime";
-import Section from "./Section";
+import Section from "../../common/components/Section";
 
 interface SectionTools {
   children: JSX.Element;

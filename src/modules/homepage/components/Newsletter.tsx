@@ -1,5 +1,5 @@
 import { AiOutlineMail } from "solid-icons/ai";
-import Button from "./Button";
+import Button from "../../common/components/Button";
 
 const Newsletter = () => {
   return (

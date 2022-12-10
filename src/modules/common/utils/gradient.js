@@ -2,92 +2,62 @@ class Gradient {
   constructor(canvas, options = {}) {
     this.activeColors = [1, 1, 1, 1];
     this.amp = 320;
-
     this.angle = 0;
-
     this.colors = [
       [0, 0, 0],
       [1, 1, 1],
     ];
-
     this.computedCanvasStyle = null;
-
     this.conf = null;
-
     this.cssVarRetries = 0;
-
     this.el = null;
-
     this.freqDelta = 0.00001;
-
     this.freqX = 0.00014;
-
     this.freqY = 0.00029;
-
     this.geometry = null;
-
-    // this.height = 600;
-    this.height = 300;
-
+    this.height = 600;
     this.isGradientLegendVisible = false;
-
     this.isIntersecting = false;
-
     this.isLoadedClass = false;
-
     this.isMetaKey = false;
-
     this.isMouseDown = false;
-
     this.isScrolling = false;
-
     this.last = 0;
-
     this.material = null;
-
     this.maxCssVarRetries = 200;
-
     this.mesh = null;
-
     this.minigl = null;
-
     this.minWidth = 1200;
-
     this.noiseFlow = 3;
-
     this.noiseSpeed = 10;
-
     this.scrollingRefreshDelay = 200;
-
     this.scrollingTimeout = null;
-
     this.scrollObserver = null;
-
     this.seed = 0;
-
     this.shaderFiles = null;
-
     this.t = 1253106;
-
     this.uniforms = null;
-
     this.vertexShader = null;
-
-    // this.width = null;
-    this.width = 200;
-
+    this.width = null;
     this.xSegCount = null;
-
     this.ySegCount = null;
 
+    // override the default value
     if (options.colors) {
       this.setColors(options.colors);
     }
-
+    if (options.width) {
+      this.width = options.width;
+    }
+    if (options.height) {
+      this.height = options.height;
+    }
+    if (options.noiseSpeed) {
+      this.noiseSpeed = options.noiseSpeed;
+    }
     if (options.seed) {
       this.seed = options.seed;
     }
-
     if (canvas) {
       this.initGradient(canvas);
     }

@@ -1,8 +1,8 @@
 import { JSX, splitProps } from "solid-js";
-import Container from "../components/Container";
-import Prose from "../components/Prose";
-import type { blog } from "../types";
-import formatDate from "../utils/formatDate";
+import Container from "../common/components/Container";
+import Prose from "../common/components/Prose";
+import type { blog } from "../common/types";
+import formatDate from "../common/utils/formatDate";
 
 interface LayoutBlog {
   frontmatter: blog;

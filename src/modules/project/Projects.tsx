@@ -1,5 +1,5 @@
-import Card from "../components/Card";
 import { RiBusinessLinksLine } from "solid-icons/ri";
+import Card from "../common/components/Card";
 
 const projects = [
   {

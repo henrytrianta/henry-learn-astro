@@ -1,10 +1,10 @@
 ---
+layout: ../../modules/layouts/Layout.astro
 title: Teh dan diskusi, apakah bisa menjadi tolak ukur bahagia?
 date: 2021-08-25
 summary: hari ini cukup menarik, diskusi malam ini hanya ditemani rokok dan kursi besi tua. dia adalah rekanku, cukup menyebalkan menyebut ...
 tags: Romance
 draft: false
-layout: ../../layouts/Layout.astro
 ---
 
 hari ini cukup menarik, diskusi malam ini hanya ditemani rokok dan kursi besi tua.

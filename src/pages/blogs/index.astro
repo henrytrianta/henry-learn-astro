@@ -1,9 +1,9 @@
 ---
 import type { MarkdownInstance } from "astro";
-import ArticleList from "../../components/ArticleList";
-import Layout from "../../layouts/Layout.astro";
-import LayoutSimple from "../../layouts/LayoutSimple";
-import type { blog } from "../../types";
+import ArticleList from "../../modules/blog/components/ArticleList";
+import type { blog } from "../../modules/common/types";
+import Layout from "../../modules/layouts/Layout.astro";
+import LayoutSimple from "../../modules/layouts/LayoutSimple";
 
 let articles = [] as MarkdownInstance<blog>[];
 
@@ -21,8 +21,8 @@ console.log(articles);
 
 <Layout title="Blog">
   <LayoutSimple
-    title="Writing on software design, company building, and the aerospace industry."
-    intro="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
+    title="Here I put my random notes, thought, and concern."
+    intro="All of my short time to write about, my life, writting while I drink a cup of tea."
   >
     <div
       class="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40"
